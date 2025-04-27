@@ -1,0 +1,309 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glitz & Gloss</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* About section styles */
+        .section {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .about-us-section {
+            font-family: 'Poppins', sans-serif;
+            color: #ff66b2;
+            padding: 3rem;
+            text-align: center;
+            background: linear-gradient(to right, #ffe6f0, #ffccf2);
+            border-radius: 20px;
+            margin: 2rem auto;
+            width: 80%;
+            box-shadow: 0 4px 20px rgba(255, 105, 180, 0.2);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1.5s ease, transform 1.5s ease;
+        }
+
+        .about-us-section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-us-section h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-us-section p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .about-us-section .slogan {
+            font-style: italic;
+            margin-top: 2rem;
+            font-size: 1.1rem;
+        }
+        .contact-section {
+            /* add styles here */
+        }
+    </style>
+</head>
+<body style="background-color: #ffe6f0; font-family: 'Poppins', sans-serif;">
+    <nav class="navbar navbar-expand-lg" style="background-color: #ff99cc;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="font-family: 'Dancing Script', cursive; font-size: 34px; color: white;">
+                Glitz & Gloss Cosmetics Shop
+            </a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link text-white" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#menu">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home">
+        <div class="container mt-4 text-center">
+            <h1>Welcome to Glitz & Gloss!</h1>
+            <video width="100%" height="400" controls>
+                <source src="{% static 'video/promo.mp4' %}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <div id="datetime" style="
+                font-size: 48px;
+                font-weight: bold;
+                color: #333;
+                margin-top: 30px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            "></div> <!-- Styled datetime -->
+
+            <audio id="background-music" autoplay loop>
+                <source src="{% static 'music/background.mp3' %}" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </section>
+
+    <section id="about" class="about-us-section show">
+        <h1>Welcome to Glitz & Gloss Cosmetics Shop!</h1>
+        <p>
+            Where beauty meets brilliance — ✨ Established on <strong>April 26, 2025</strong>, 
+            Glitz & Gloss was born out of a dream to bring confidence, color, and charm to everyone’s daily life.
+        </p>
+        <p>
+            We believe that makeup is not just about looking good, but feeling empowered, fearless, and fabulous. 
+            Our carefully curated collections bring out the sparkle in you — whether it's a bold new lipstick, 
+            a soft shimmering blush, or an elegant skincare essential.
+        </p>
+        <p>
+            At Glitz & Gloss, you're not just a customer — you're family. 🩷  
+            Join us as we paint the world a little more pink, one beautiful soul at a time.
+        </p>
+        <p class="slogan">
+            “Glitz up your life, gloss up your dreams!” 🌸
+        </p>
+    </section>
+
+    <section id="menu" class="container mt-5">
+        <h1 class="text-center mb-4">Our Products</h1>
+        <div class="row" id="product-grid">
+            <div class="col-md-4 mb-4" onclick="showDetails('Lip Gloss', '₱199', 'A glossy finish to make your lips shine all day.')">
+                <div class="card h-100">
+                    <img src="{% static 'products/lip_gloss.png' %}" class="card-img-top" alt="Lip Gloss">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Lip Gloss</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" onclick="showDetails('Matte Lipstick', '₱299', 'Rich, long-lasting matte lipstick in stunning shades.')">
+                <div class="card h-100">
+                    <img src="{% static 'products/matte_lipstick.png' %}" class="card-img-top" alt="Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Matte Lipstick</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" onclick="showDetails('Blush Powder', '₱249', 'Add a rosy glow to your cheeks with our silky blush.')">
+                <div class="card h-100">
+                    <img src="{% static 'products/blush_powder.png' %}" class="card-img-top" alt="Blush Powder">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Blush Powder</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" onclick="showDetails('Highlighter', '₱350', 'Shine bright with our best-selling highlighter!')">
+                <div class="card h-100">
+                    <img src="{% static 'products/highlighter.png' %}" class="card-img-top" alt="Highlighter">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Highlighter</h5>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-4 mb-4" onclick="showDetails('Mascara', '₱275', 'Volumize your lashes with our waterproof mascara.')">
+                <div class="card h-100">
+                    <img src="{% static 'products/mascara.png' %}" class="card-img-top" alt="Mascara">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Mascara</h5>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-4 mb-4" onclick="showDetails('Foundation', '₱499', 'Smooth, flawless coverage for all skin types.')">
+                <div class="card h-100">
+                    <img src="{% static 'products/foundation.png' %}" class="card-img-top" alt="Foundation">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Foundation</h5>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-4 mb-4" onclick="showDetails('Eyebrow Pencil', '₱180', 'Perfectly sculpted brows in just a few strokes.')">
+                <div class="card h-100">
+                    <img src="{% static 'products/eyebrow_pencil.png' %}" class="card-img-top" alt="Eyebrow Pencil">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Eyebrow Pencil</h5>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-4 mb-4" onclick="showDetails('Setting Spray', '₱320', 'Keep your makeup fresh all day with our setting spray.')">
+                <div class="card h-100">
+                    <img src="{% static 'products/setting_spray.png' %}" class="card-img-top" alt="Setting Spray">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Setting Spray</h5>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-4 mb-4" onclick="showDetails('Concealer', '₱280', 'Hide imperfections with our creamy, full-coverage concealer.')">
+                <div class="card h-100">
+                    <img src="{% static 'products/concealer.png' %}" class="card-img-top" alt="Concealer">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Concealer</h5>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-4 mb-4" onclick="showDetails('Eyeshadow Palette', '₱650', 'Create endless looks with 12 gorgeous shades.')">
+                <div class="card h-100">
+                    <img src="{% static 'products/eyeshadow_palette.png' %}" class="card-img-top" alt="Eyeshadow Palette">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Eyeshadow Palette</h5>
+                    </div>
+                </div>
+            </div>
+            <!-- more product cards -->
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery-section">
+        <h2>Our Glamorous Gallery</h2>
+        <div class="gallery-grid">
+            <img src="{% static 'gallery/image1.png' %}" alt="Glam 1">
+            <img src="{% static 'gallery/image2.png' %}" alt="Glam 2">
+            <img src="{% static 'gallery/image3.png' %}" alt="Glam 3">
+            <img src="{% static 'gallery/image4.png' %}" alt="Glam 4">
+            <img src="{% static 'gallery/image5.png' %}" alt="Glam 5">
+            <img src="{% static 'gallery/image6.png' %}" alt="Glam 6">
+            <img src="{% static 'gallery/image7.png' %}" alt="Glam 7">
+            <img src="{% static 'gallery/image8.png' %}" alt="Glam 8">
+            <img src="{% static 'gallery/image9.png' %}" alt="Glam 9">
+            <img src="{% static 'gallery/image10.png' %}" alt="Glam 10">
+            <img src="{% static 'gallery/image11.png' %}" alt="Glam 11">
+            <img src="{% static 'gallery/image12.png' %}" alt="Glam 12">
+            <img src="{% static 'gallery/image13.png' %}" alt="Glam 13">
+            <img src="{% static 'gallery/image14.png' %}" alt="Glam 14">
+            <img src="{% static 'gallery/image15.png' %}" alt="Glam 15">
+            <!-- more images -->
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2>Contact Us</h2>
+        <div class="contact-cards">
+            <div class="contact-card">
+                <i class="fas fa-phone"></i>
+                <h3>Phone</h3>
+                <p>+63 9 876593762</p>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p>glitz&glossco.com</p>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Address</h3>
+                <p>Morong, Rizal</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 20px;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="productDescription"></p>
+                    <h4 id="productPrice" class="text-center mt-3"></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function displayDateTime() {
+            function updateDateTime() {
+                const now = new Date();
+                const options = { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric', 
+                    hour: '2-digit', 
+                    minute: '2-digit', 
+                    second: '2-digit',
+                    hour12: true
+                };
+                const formattedDateTime = now.toLocaleString('en-US', options);
+                document.getElementById('datetime').innerHTML = formattedDateTime;
+            }
+
+            updateDateTime(); // initial call
+            setInterval(updateDateTime, 1000); // update every second
+        }
+
+        displayDateTime(); // IMPORTANT: call the function
+
+        function showDetails(name, price, description) {
+            document.getElementById('productModalLabel').innerText = name;
+            document.getElementById('productDescription').innerText = description;
+            document.getElementById('productPrice').innerText = price;
+            var myModal = new bootstrap.Modal(document.getElementById('productModal'));
+            myModal.show();
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
